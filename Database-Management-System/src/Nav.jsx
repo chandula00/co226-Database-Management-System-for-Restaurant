@@ -1,4 +1,7 @@
+
+
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./nav.css";
 
 
@@ -54,27 +57,24 @@ export const Nav = () => {
     };
   }, []);
 
+  //const navigate = useNavigate();
+
   return (
     <div class="nav">
-      {/* <img
-        align="center"
-        alt="logo"
-        className="logo"
-        src="src\assets\My_project.png"
-      /> */}
+
       <a/>
       <ul className="nav-items">
-        <li className="active">
+        <li className="active" onClick={() => navigate("/Home")}>
           Home<span></span>
         </li>
-        <li>
+        <li onClick={() => navigate("/Orders")}>
           Orders<span></span>
         </li>
-        <li>
+        <li onClick={() => navigate("/Reservation")}>
           Reservations<span></span>
         </li>
-        <li><i className="fa fa-sign-in" aria-hidden="true"></i>&nbsp;
-          Login<span></span>
+        <li onClick={() => navigate("/authenticate")}><i className="fa fa-sign-out" aria-hidden="true" ></i >&nbsp;
+          Log Out<span></span>
         </li>
       </ul>
       <div className="menu-btn">

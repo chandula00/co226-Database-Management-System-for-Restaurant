@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import "./MenuPanel.css";
 
-const MenuPanel = () => {
+export const MenuPanel = () => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [currentItem, setCurrentItem] = useState(null);
 
   const togglePanel = () => {
     setIsPanelOpen(!isPanelOpen);
   };
 
-  const handleItemHover = (itemName) => {
-    setCurrentItem(itemName);
-  };
-
+  //const navigate = useNavigate();
   return (
     <div className={`menu-panel ${isPanelOpen ? "open" : ""}`}>
       <div className="menu-panel__toggle" onClick={togglePanel}>
@@ -27,25 +23,24 @@ const MenuPanel = () => {
           className="menu-panel__logo"
         />
         <ul>
-          <li data-name="Home">
+          <li data-name="Home" onClick={() => navigate("/Home")}>
             <i className="fas fa-home"></i> {/* Home icon */}
           </li>
-          <li data-name="Orders">
+          <li data-name="Orders" onClick={() => navigate("/Orders")}>
             <i className="fa fa-book" aria-hidden="true"></i>{" "}
-            {/* Orders icon */}
           </li>
-          <li data-name="Reservation">
+          <li data-name="Reservation" onClick={() => navigate("/Reservation")}>
             <i className="fa fa-bookmark" aria-hidden="true"></i>{" "}
-            {/* Bookmarks icon */}
+            
           </li>
-          <li data-name="About">
-            <i className="fas fa-info-circle"></i> {/* About icon */}
+          <li data-name="About" onClick={() => navigate("/About")}>
+            <i className="fas fa-info-circle"></i>
           </li>
-          <li data-name="Services">
-            <i className="fas fa-cogs"></i> {/* Services icon */}
+          <li data-name="Services" onClick={() => navigate("/Services")}>
+            <i className="fas fa-cogs"></i> 
           </li>
-          <li data-name="Contact">
-            <i className="fas fa-envelope"></i> {/* Contact icon */}
+          <li data-name="Contact" onClick={() => navigate("/Contact")}>
+            <i className="fas fa-envelope"></i>
           </li>
         </ul>
       </div>
@@ -53,4 +48,3 @@ const MenuPanel = () => {
   );
 };
 
-export default MenuPanel;
