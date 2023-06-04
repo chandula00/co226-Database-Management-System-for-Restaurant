@@ -27,50 +27,25 @@ const MenuPanel = () => {
           className="menu-panel__logo"
         />
         <ul>
-          <li
-            onMouseEnter={() => handleItemHover("Home")}
-            onMouseLeave={() => handleItemHover(null)}
-          >
-            <i className="fas fa-home" data-name="Home"></i> {/* Home icon */}
+          <li data-name="Home">
+            <i className="fas fa-home"></i> {/* Home icon */}
           </li>
-          <li
-            onMouseEnter={() => handleItemHover("Orders")}
-            onMouseLeave={() => handleItemHover(null)}
-          >
-            <i className="fa fa-book" aria-hidden="true" data-name="Orders"></i>{" "}
+          <li data-name="Orders">
+            <i className="fa fa-book" aria-hidden="true"></i>{" "}
             {/* Orders icon */}
           </li>
-          <li
-            onMouseEnter={() => handleItemHover("Reservations")}
-            onMouseLeave={() => handleItemHover(null)}
-          >
-            <i
-              className="fa fa-bookmark"
-              aria-hidden="true"
-              data-name="Reservation"
-            ></i>{" "}
+          <li data-name="Reservation">
+            <i className="fa fa-bookmark" aria-hidden="true"></i>{" "}
             {/* Bookmarks icon */}
           </li>
-          <li
-            onMouseEnter={() => handleItemHover("About")}
-            onMouseLeave={() => handleItemHover(null)}
-          >
-            <i className="fas fa-info-circle" data-name="About"></i>{" "}
-            {/* About icon */}
+          <li data-name="About">
+            <i className="fas fa-info-circle"></i> {/* About icon */}
           </li>
-          <li
-            onMouseEnter={() => handleItemHover("Services")}
-            onMouseLeave={() => handleItemHover(null)}
-          >
-            <i className="fas fa-cogs" data-name="Services"></i>{" "}
-            {/* Services icon */}
+          <li data-name="Services">
+            <i className="fas fa-cogs"></i> {/* Services icon */}
           </li>
-          <li
-            onMouseEnter={() => handleItemHover("Contact")}
-            onMouseLeave={() => handleItemHover(null)}
-          >
-            <i className="fas fa-envelope" data-name="Contact"></i>{" "}
-            {/* Contact icon */}
+          <li data-name="Contact">
+            <i className="fas fa-envelope"></i> {/* Contact icon */}
           </li>
         </ul>
       </div>
