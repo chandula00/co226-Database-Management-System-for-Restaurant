@@ -79,12 +79,12 @@ export const Login = () => {
           <b>LOGIN</b>
         </button>
       </form>
-      <button
+      {/* <button
         className="link-btn"
         onClick={() => navigate("/register")}
       >
         Don't have an account? Register here.
-      </button>
+      </button> */}
     </div>
     </div>
   );
