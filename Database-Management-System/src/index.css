@@ -74,11 +74,15 @@ html{
   align-items: center;
   margin: 0;
   padding: 0px;
-  background-image: url(./assets/vintage-old-rustic-cutlery-dark.jpg);
+  /* background-image: url(./assets/4357397.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   color: #000;
   height: 100%;
   animation: rotate 6s infinite alternate linear;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif,Euclid Circular A;
+}
+
+html > .background-image {
+  filter: invert(100%);
 }

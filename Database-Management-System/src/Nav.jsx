@@ -1,15 +1,17 @@
-import "./nav.css"
+import React, { useEffect } from "react";
+import "./nav.css";
+
 
 export const Nav = () => {
   const menuItems = document.querySelectorAll(".nav li");
 
-  menuItems.forEach(item => {
-    ["mouseenter", "mouseout"].forEach(evt => {
-      item.addEventListener(evt, e => {
+  menuItems.forEach((item) => {
+    ["mouseenter", "mouseout"].forEach((evt) => {
+      item.addEventListener(evt, (e) => {
         let parentOffset = item.getBoundingClientRect(),
-            relX = e.clientX - parentOffset.left,
-            relY = e.clientY - parentOffset.top;
-        console.log(e)
+          relX = e.clientX - parentOffset.left,
+          relY = e.clientY - parentOffset.top;
+        console.log(e);
         const span = item.querySelector("span");
 
         span.style.top = relY + "px";
@@ -18,38 +20,51 @@ export const Nav = () => {
     });
   });
 
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-        document.querySelector(".nav").classList.add("mobile");
-        return
-  }
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.querySelector(".nav").style.top = "0";
-  } else {
-    document.querySelector(".nav").style.top = "-100px";
-  }
-  prevScrollpos = currentScrollPos;
-}
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
+    ) {
+      document.querySelector(".nav").classList.add("mobile");
+      return;
+    }
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.querySelector(".nav").style.top = "0";
+    } else {
+      document.querySelector(".nav").style.top = "-100px";
+    }
+    prevScrollpos = currentScrollPos;
+  };
 
-const menuBtn = document.querySelector(".menu-btn")
-const navUl = document.querySelector(".nav ul")
+  useEffect(() => {
+    const menuBtn = document.querySelector(".menu-btn");
+    const navUl = document.querySelector(".nav ul");
 
-  menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("open");
-    navUl.classList.toggle("open");})
+    menuBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("open");
+      navUl.classList.toggle("open");
+    });
+
+    return () => {
+      menuBtn.removeEventListener("click", () => {
+        menuBtn.classList.toggle("open");
+        navUl.classList.toggle("open");
+      });
+    };
+  }, []);
 
   return (
     <div class="nav">
-      <img
+      {/* <img
         align="center"
         alt="logo"
         className="logo"
         src="src\assets\My_project.png"
-      />
-      <ul class="nav-items">
-        <li class="active">
+      /> */}
+      <a/>
+      <ul className="nav-items">
+        <li className="active">
           Home<span></span>
         </li>
         <li>
@@ -58,12 +73,12 @@ const navUl = document.querySelector(".nav ul")
         <li>
           Reservations<span></span>
         </li>
-        <li>
+        <li><i className="fa fa-sign-in" aria-hidden="true"></i>&nbsp;
           Login<span></span>
         </li>
       </ul>
-      <div class="menu-btn">
-        <div class="menu-btn__burger"></div>
+      <div className="menu-btn">
+        <div className="menu-btn__burger"></div>
       </div>
     </div>
   );

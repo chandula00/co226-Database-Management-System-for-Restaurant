@@ -15,8 +15,8 @@
 	height: 10vh;
 	/* backdrop-filter: blur(2px);
 	z-index: 10; */
-	background: linear-gradient(to bottom, rgba(185, 185, 185, 0.559), rgba(255, 255, 255, 0));
-  backdrop-filter: blur(0.5px);
+	/* background: linear-gradient(to bottom, rgba(185, 185, 185, 0.559), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(0.5px); */
   z-index: 9999;
 	padding: 0 10vw;
 	display: flex;
@@ -25,7 +25,7 @@
 	transition: top 300ms ease-in-out;
 }
 .nav.mobile {
-	background-color: rgba(0,0,0,0.4);
+	background-color: #181818;
 }
 .nav .logo {
 	width: 100px;
@@ -42,8 +42,9 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 10px;
-	color: #ffffff;
+	color: #000000;
 	font-family: "Montserrat", sans-serif;
+	font-weight: bolder;
 }
 
 .nav li {
@@ -82,7 +83,7 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background-color: #53636ca9;
+  background-color: #0c0e10;
   -webkit-transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
   -webkit-transform: translate(-50%, -50%);
@@ -118,7 +119,8 @@
 	  0 50px 60px rgba(0, 0, 0, 0.24)
 	;*/
 
-	background-color: #a1bac894;
+	background-color: #9db6c494;
+	background-color: #f4d07daa;
 
 }
 
@@ -139,7 +141,7 @@
 	width: 25px;
 	height: 3px;
 	border-radius: 3px;
-	background: white;
+	background: rgb(6, 6, 6);
 	transition: all 0.3s ease-in-out
 	
 }
@@ -152,7 +154,7 @@
 	width: 25px;
 	height: 3px;
 	
-	background: white;
+	background: rgb(6, 6, 6);
 	transition: all 0.3s ease-in-out
 }
 

@@ -1,4 +1,5 @@
 import { Nav } from './Nav'
+import MenuPanel from './MenuPanel'
 import './App.css'
 
 function App() {
@@ -22,10 +23,12 @@ function App() {
   })
 
   return (
-    <dev>
+    <div>
       <Nav/>
-    </dev>
+      <MenuPanel/>
+    </div>
   )
 }
 
 export default App
+
