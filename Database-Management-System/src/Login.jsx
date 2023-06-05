@@ -9,7 +9,7 @@ export const Login = () => {
   const [email, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();

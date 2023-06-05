@@ -1,46 +1,28 @@
-
-
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./nav.css";
 
-
 export const Nav = () => {
-  const menuItems = document.querySelectorAll(".nav li");
-
-  menuItems.forEach((item) => {
-    ["mouseenter", "mouseout"].forEach((evt) => {
-      item.addEventListener(evt, (e) => {
-        let parentOffset = item.getBoundingClientRect(),
-          relX = e.clientX - parentOffset.left,
-          relY = e.clientY - parentOffset.top;
-        console.log(e);
-        const span = item.querySelector("span");
-
-        span.style.top = relY + "px";
-        span.style.left = relX + "px";
-      });
-    });
-  });
-
-  var prevScrollpos = window.pageYOffset;
-  window.onscroll = function () {
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
-    ) {
-      document.querySelector(".nav").classList.add("mobile");
-      return;
-    }
-    var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-      document.querySelector(".nav").style.top = "0";
-    } else {
-      document.querySelector(".nav").style.top = "-100px";
-    }
-    prevScrollpos = currentScrollPos;
-  };
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    const menuItems = document.querySelectorAll(".nav li");
+
+    menuItems.forEach((item) => {
+      ["mouseenter", "mouseout"].forEach((evt) => {
+        item.addEventListener(evt, (e) => {
+          const parentOffset = item.getBoundingClientRect();
+          const relX = e.clientX - parentOffset.left;
+          const relY = e.clientY - parentOffset.top;
+          const span = item.querySelector("span");
+
+          span.style.top = relY + "px";
+          span.style.left = relX + "px";
+        });
+      });
+    });
+
     const menuBtn = document.querySelector(".menu-btn");
     const navUl = document.querySelector(".nav ul");
 
@@ -50,6 +32,20 @@ export const Nav = () => {
     });
 
     return () => {
+      menuItems.forEach((item) => {
+        ["mouseenter", "mouseout"].forEach((evt) => {
+          item.removeEventListener(evt, (e) => {
+            const parentOffset = item.getBoundingClientRect();
+            const relX = e.clientX - parentOffset.left;
+            const relY = e.clientY - parentOffset.top;
+            const span = item.querySelector("span");
+
+            span.style.top = relY + "px";
+            span.style.left = relX + "px";
+          });
+        });
+      });
+
       menuBtn.removeEventListener("click", () => {
         menuBtn.classList.toggle("open");
         navUl.classList.toggle("open");
@@ -57,24 +53,25 @@ export const Nav = () => {
     };
   }, []);
 
-  //const navigate = useNavigate();
+  const handleItemClick = (path) => {
+    navigate(path);
+  };
 
   return (
-    <div class="nav">
-
-      <a/>
+    <div className="nav">
+      <a />
       <ul className="nav-items">
-        <li className="active" onClick={() => navigate("/Home")}>
+        <li className={location.pathname === "/Home" ? "active" : ""} onClick={() => handleItemClick("/Home")}>
           Home<span></span>
         </li>
-        <li onClick={() => navigate("/Orders")}>
+        <li className={location.pathname === "/Orders" ? "active" : ""} onClick={() => handleItemClick("/Orders")}>
           Orders<span></span>
         </li>
-        <li onClick={() => navigate("/Reservation")}>
+        <li className={location.pathname === "/Reservations" ? "active" : ""} onClick={() => handleItemClick("/Reservations")}>
           Reservations<span></span>
         </li>
-        <li onClick={() => navigate("/authenticate")}><i className="fa fa-sign-out" aria-hidden="true" ></i >&nbsp;
-          Log Out<span></span>
+        <li className={location.pathname === "/authenticate" ? "active" : ""} onClick={() => handleItemClick("/authenticate")}>
+          <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out<span></span>
         </li>
       </ul>
       <div className="menu-btn">

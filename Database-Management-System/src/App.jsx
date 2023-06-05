@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Login } from "./Login";
 import { Home } from "./Home";
+import { Orders } from "./Orders";
+import { Reservations } from "./Reservations";
 
 function App() {
   (function () {
@@ -25,7 +27,14 @@ function App() {
 
   return (
     <div className="App">
-      <Home />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/authenticate" element={<Login />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/reservations" element={<Reservations />} />
+      </Routes>
+      {/* <Home /> */}
       {/* <Login /> */}
     </div>
   );

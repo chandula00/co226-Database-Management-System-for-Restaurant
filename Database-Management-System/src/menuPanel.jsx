@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./MenuPanel.css";
+import { Routes, Route, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const MenuPanel = () => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -8,7 +10,7 @@ export const MenuPanel = () => {
     setIsPanelOpen(!isPanelOpen);
   };
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div className={`menu-panel ${isPanelOpen ? "open" : ""}`}>
       <div className="menu-panel__toggle" onClick={togglePanel}>
@@ -21,6 +23,7 @@ export const MenuPanel = () => {
           src="src/assets/My_project.png"
           alt="Logo"
           className="menu-panel__logo"
+          onClick={() => navigate("/Home")}
         />
         <ul>
           <li data-name="Home" onClick={() => navigate("/Home")}>
@@ -29,15 +32,14 @@ export const MenuPanel = () => {
           <li data-name="Orders" onClick={() => navigate("/Orders")}>
             <i className="fa fa-book" aria-hidden="true"></i>{" "}
           </li>
-          <li data-name="Reservation" onClick={() => navigate("/Reservation")}>
+          <li data-name="Reservation" onClick={() => navigate("/Reservations")}>
             <i className="fa fa-bookmark" aria-hidden="true"></i>{" "}
-            
           </li>
           <li data-name="About" onClick={() => navigate("/About")}>
             <i className="fas fa-info-circle"></i>
           </li>
           <li data-name="Services" onClick={() => navigate("/Services")}>
-            <i className="fas fa-cogs"></i> 
+            <i className="fas fa-cogs"></i>
           </li>
           <li data-name="Contact" onClick={() => navigate("/Contact")}>
             <i className="fas fa-envelope"></i>
@@ -47,4 +49,3 @@ export const MenuPanel = () => {
     </div>
   );
 };
-
