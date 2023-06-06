@@ -1,9 +1,9 @@
-import React, { useState,} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import axios from "axios";
 import AuthService from "./services/auth.service";
-import './Login.css'
-import {MenuPanel} from "./MenuPanel";
+import "./Login.css";
+import { MenuPanel } from "./MenuPanel";
 
 export const Login = () => {
   const [email, setName] = useState("");
@@ -50,36 +50,36 @@ export const Login = () => {
   };
   return (
     <div className="login-page">
-        <MenuPanel/>
-    <div className="auth-form-cantainer">
-      <h2>
-        <b>Login</b>
-      </h2>
-      <h3>Enter your credentials</h3>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <input
-          value={email}
-          onChange={(input) => setName(input.target.value)}
-          type="email"
-          placeholder="Email"
-          id="email"
-          name="email"
-          required="required"
-        />
-        <input
-          value={password}
-          onChange={(input) => setPassword(input.target.value)}
-          type="password"
-          placeholder="Password"
-          id="password" 
-          name="password"
-          required="required"
-        />
-        <button type="submit" onClick={() => navigate("/Home")}>
-          <b>LOGIN</b>
-        </button>
-      </form>
-    </div>
+      <MenuPanel />
+      <div className="auth-form-cantainer">
+        <h2>
+          <b>Login</b>
+        </h2>
+        <h3>Enter your credentials</h3>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <input
+            value={email}
+            onChange={(input) => setName(input.target.value)}
+            type="email"
+            placeholder="Email"
+            id="email"
+            name="email"
+            required="required"
+          />
+          <input
+            value={password}
+            onChange={(input) => setPassword(input.target.value)}
+            type="password"
+            placeholder="Password"
+            id="password"
+            name="password"
+            required="required"
+          />
+          <button type="submit" onClick={() => navigate("/Home")}>
+            <b>LOGIN</b>
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -74,6 +74,7 @@
 .menu-panel__content ul li:hover {
   filter: drop-shadow(0 0 2em #ffffff);
   color: #f4d07daa;
+  scale: 1.35;
 }
 
 .menu-panel__content ul li {

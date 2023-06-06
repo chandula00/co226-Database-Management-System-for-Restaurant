@@ -83,6 +83,4 @@ html{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif,Euclid Circular A;
 }
 
-html > .background-image {
-  filter: invert(100%);
-}
+
