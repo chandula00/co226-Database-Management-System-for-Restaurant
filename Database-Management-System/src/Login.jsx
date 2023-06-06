@@ -75,16 +75,10 @@ export const Login = () => {
           name="password"
           required="required"
         />
-        <button type="submit">
+        <button type="submit" onClick={() => navigate("/Home")}>
           <b>LOGIN</b>
         </button>
       </form>
-      {/* <button
-        className="link-btn"
-        onClick={() => navigate("/register")}
-      >
-        Don't have an account? Register here.
-      </button> */}
     </div>
     </div>
   );
