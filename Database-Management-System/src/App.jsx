@@ -34,8 +34,6 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/reservations" element={<Reservations />} />
       </Routes>
-      {/* <Home /> */}
-      {/* <Login /> */}
     </div>
   );
 }

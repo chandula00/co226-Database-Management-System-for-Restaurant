@@ -221,7 +221,7 @@
 
     .nav li.active {
     	background: transparent;
-    	color:  #32BEA5;
+    	color:  #545a59;
     }
 
     .nav li.active:hover,
@@ -284,6 +284,7 @@
 	z-index: 9999;
 	font-family: "Montserrat", sans-serif;
 	font-weight: bolder;
+	min-height: 100vh;
   }
   
   .logout-card {

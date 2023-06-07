@@ -16,28 +16,42 @@ export const Nav = () => {
 
     document.addEventListener("click", handleBackgroundClick);
 
-    return () => {
-      menuItems.forEach((item) => {
-        ["mouseenter", "mouseout"].forEach((evt) => {
-          item.removeEventListener(evt, (e) => {
-            const parentOffset = item.getBoundingClientRect();
-            const relX = e.clientX - parentOffset.left;
-            const relY = e.clientY - parentOffset.top;
-            const span = item.querySelector("span");
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
+      ) {
+        document.querySelector(".nav").classList.add("mobile");
+        return;
+      }
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.querySelector(".nav").style.top = "0";
+      } else {
+        document.querySelector(".nav").style.top = "-100px";
+      }
+      prevScrollpos = currentScrollPos;
+    };
 
-            span.style.top = relY + "px";
-            span.style.left = relX + "px";
-          });
+    menuBtn.removeEventListener("click", () => {
+      menuBtn.classList.toggle("open");
+      navUl.classList.toggle("open");
+    });
+
+    menuItems.forEach((item) => {
+      ["mouseenter", "mouseout"].forEach((evt) => {
+        item.removeEventListener(evt, (e) => {
+          const parentOffset = item.getBoundingClientRect();
+          const relX = e.clientX - parentOffset.left;
+          const relY = e.clientY - parentOffset.top;
+          const span = item.querySelector("span");
+          span.style.top = relY + "px";
+          span.style.left = relX + "px";
         });
       });
+    });
 
-      menuBtn.removeEventListener("click", () => {
-        menuBtn.classList.toggle("open");
-        navUl.classList.toggle("open");
-      }); 
-
-      document.removeEventListener("click", handleBackgroundClick);
-    };
+    document.removeEventListener("click", handleBackgroundClick);
   }, []);
 
   const handleItemClick = (path) => {
@@ -64,33 +78,54 @@ export const Nav = () => {
   };
 
   return (
-    <div className="nav">
-      <a />
-      <ul className="nav-items">
-        <li className={location.pathname === "/Home" ? "active" : ""} onClick={() => handleItemClick("/Home")}>
-          Home<span></span>
-        </li>
-        <li className={location.pathname === "/Orders" ? "active" : ""} onClick={() => handleItemClick("/Orders")}>
-          Orders<span></span>
-        </li>
-        <li className={location.pathname === "/Reservations" ? "active" : ""} onClick={() => handleItemClick("/Reservations")}>
-          Reservations<span></span>
-        </li>
-        <li className="logout-button" onClick={() => handleLogout()}>
-          <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out<span></span>
-        </li>
-      </ul>
-      <div className="menu-btn">
-        <div className="menu-btn__burger"></div>
+    <div>
+      <div className="nav">
+        <a />
+        <ul className="nav-items">
+          <li
+            className={location.pathname === "/Home" ? "active" : ""}
+            onClick={() => handleItemClick("/Home")}
+          >
+            Home<span></span>
+          </li>
+          <li
+            className={location.pathname === "/Orders" ? "active" : ""}
+            onClick={() => handleItemClick("/Orders")}
+          >
+            Orders<span></span>
+          </li>
+          <li
+            className={location.pathname === "/Reservations" ? "active" : ""}
+            onClick={() => handleItemClick("/Reservations")}
+          >
+            Reservations<span></span>
+          </li>
+          <li className="logout-button" onClick={() => handleLogout()}>
+            <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out
+            <span></span>
+          </li>
+        </ul>
+        <div className="menu-btn">
+          <div class="menu-btn__burger"></div>
+        </div>
       </div>
-
       {showLogoutConfirmation && (
         <div className="logout-confirmation" ref={logoutConfirmationRef}>
           <div className="logout-card">
             <h2>Are you sure you want to logout?</h2>
             <div className="buttons">
-              <button className="confirm-button" onClick={() => handleConfirmLogout()}>OK</button>
-              <button className="cancel-button" onClick={() => handleCancelLogout()}>Cancel</button>
+              <button
+                className="confirm-button"
+                onClick={() => handleConfirmLogout()}
+              >
+                OK
+              </button>
+              <button
+                className="cancel-button"
+                onClick={() => handleCancelLogout()}
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
